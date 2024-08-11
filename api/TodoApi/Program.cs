@@ -2,6 +2,15 @@ using NSwag.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors(options => {
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.AllowAnyHeader();
+            policy.AllowAnyOrigin();
+            policy.AllowAnyMethod();
+        });
+});
 builder.Services.AddDbContext<TodoDb>(opt => opt.UseInMemoryDatabase("TodoList"));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -14,6 +23,7 @@ builder.Services.AddOpenApiDocument(config =>
 });
 
 var app = builder.Build();
+app.UseCors();
 
 if (app.Environment.IsDevelopment())
 {

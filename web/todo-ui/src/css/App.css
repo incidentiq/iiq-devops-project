@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+}
+
+.serverUp {
+  color: green;
+}
+.serverDown {
+  color: red;
+}
