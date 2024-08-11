@@ -1,9 +1,12 @@
+import '../../css/App.css';
 import ListGroup from 'react-bootstrap/ListGroup';
 import TodoItem from './todoItem';
 import Container from 'react-bootstrap/Container';
 import TodoForm from  './todoForm';
 import { useState, useEffect, useCallback } from 'react';
 import { testUrl } from '../../settings';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function TodoDisplay ({setServerUp, serverUp}) {
   const [todoData, setTodoData] = useState([])
@@ -67,8 +70,14 @@ function TodoDisplay ({setServerUp, serverUp}) {
     }
   }
   return (
-    <Container>
+    <Container className={'todoContainer'}>
       <ListGroup>
+      <ListGroup.Item variant="secondary">
+      <Row>
+        <Col>Task</Col>
+        <Col>Completed?</Col>
+      </Row>
+      </ListGroup.Item>
         {ListItems}
       </ListGroup>
       {showForm(serverUp, addToList)}

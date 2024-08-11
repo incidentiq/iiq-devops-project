@@ -1,10 +1,15 @@
 .App {
   text-align: center;
 }
-
+.header {
+  padding: 10px;
+}
 .serverUp {
   color: green;
 }
 .serverDown {
   color: red;
+}
+.todoContainer {
+  padding: 10px;
 }

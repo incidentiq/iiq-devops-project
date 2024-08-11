@@ -13,8 +13,8 @@ function TodoForm ({addToList}) {
 
   return (
     <InputGroup>
-      <Form.Label>New Item:</Form.Label>
-      <Form.Control value={todo} onChange={e => setTodo(e.target.value)} type='text' placeholder='todo item text'></Form.Control>
+      <InputGroup.Text>New Item:</InputGroup.Text>
+      <Form.Control size='sm' value={todo} onChange={e => setTodo(e.target.value)} type='text' placeholder='enter text here'></Form.Control>
       <Button variant='primary' disabled={todo === ''} onClick={addTodo}>Add</Button>
     </InputGroup>
   )

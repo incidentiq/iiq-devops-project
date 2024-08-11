@@ -14,7 +14,7 @@ function Header ({serverUp}) {
     }
   }
   return (
-    <Container>
+    <Container className={'header'}>
       <Row>
         <Col><h1>Todo List</h1></Col>
         {serverStatus()}

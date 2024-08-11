@@ -1,24 +1,25 @@
 import ListGroup from 'react-bootstrap/ListGroup';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form'
+import Col from 'react-bootstrap/esm/Col';
+import Row from 'react-bootstrap/esm/Row';
+import Form from 'react-bootstrap/Form';
 
 function TodoItem ({item, markComplete}) {
   return (
-    <ListGroup.Item key={item.id} id={item.id}>
-      <Container>
-        <Row>
-          <Col>{item.name}</Col>
-          <Col><Form.Check
-            defaultChecked={item.isComplete}
-            type='checkbox'
-            id={item.name}
+    <ListGroup.Item variant={item.isComplete ? 'success' : ''} key={item.id} id={item.id}>
+      <Row>
+        <Col>
+          {item.name}
+        </Col>
+        <Col>
+          <Form.Check 
+            type="switch" 
+            defaultChecked={item.isComplete} 
+            id={item.id} 
             onChange={e => markComplete(item.id, e.target.checked)}
-          /></Col>
-        </Row>
-      </Container>
-    </ListGroup.Item>
+          />
+        </Col>
+      </Row>
+      </ListGroup.Item>
   )
 }
 export default TodoItem
