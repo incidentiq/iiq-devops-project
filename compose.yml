@@ -1,0 +1,13 @@
+services:
+  api:
+    build: 
+      dockerfile: ./Dockerfile
+      context: ./api/TodoApi
+    ports:
+      - "5050:5000"
+  web:
+    build: 
+      dockerfile: ./Dockerfile
+      context: ./web/todo-ui/
+    ports:
+      - "8080:80"
