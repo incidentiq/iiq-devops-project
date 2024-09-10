@@ -3,14 +3,14 @@ import '../css/App.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'; 
-import { testUrl } from '../settings';
+import { clusterApiUrl } from '../settings';
 
 function Header ({serverUp}) {
   function serverStatus() {
     if (serverUp) {
-      return <Col className={'serverUp'}>Connected to {testUrl}</Col>
+      return <Col className={'serverUp'}>Connected to {clusterApiUrl}</Col>
     } else {
-      return <Col className={'serverDown'}>Cannot connect to {testUrl}</Col>
+      return <Col className={'serverDown'}>Cannot connect to {clusterApiUrl}</Col>
     }
   }
   return (

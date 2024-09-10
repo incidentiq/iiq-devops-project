@@ -1,1 +1,1 @@
-var BASE_URL = 'http://localhost:5050/todoitems'
+var BASE_URL = 'http://iiqdevopsproject.com/todoitems'

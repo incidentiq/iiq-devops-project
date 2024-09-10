@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: iiqdevopsproject.com
+    http:
+      paths:
+      - path: /todoitems
+        pathType: Prefix
+        backend:
+          service:
+            name: api
+            port:
+              number: 5050
+      - path: /(.*)
+        pathType: Exact
+        backend:
+          service:
+            name: web
+            port:
+              number: 8080
