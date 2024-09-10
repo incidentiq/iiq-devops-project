@@ -41,6 +41,7 @@ Second: Configure Azure resources and local machine for accessing the AKS hosted
 
 
 Third: Configure the AKS cluster to use an Nginx ingress conroller, setup local DNS for ingress routing, and create the k8s resources
+- Run the below kubectl commands from the ./k8s folder
     1. kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
 
     2. sudo vim /etc/hosts
