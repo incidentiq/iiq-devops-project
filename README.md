@@ -28,14 +28,14 @@ First: Provision the infrastructure
 
 Second: Configure Azure resources and local machine for accessing the AKS hosted site
 - Execute the below commands to connect the Azure Container Registery with the AKS cluster and populate the ACR with the Docker images for web/api services
-    2. az aks get-credentials --resource-group iis-devops-project-rg --name iis-devops-project-aks-cluster
-    1. az aks update --name iis-devops-project-aks-cluster --resource-group iis-devops-project-rg --attach-acr iisdevopsprojectcontainerregistry
+    1. az aks get-credentials --resource-group iis-devops-project-rg --name iis-devops-project-aks-cluster
+    2. az aks update --name iis-devops-project-aks-cluster --resource-group iis-devops-project-rg --attach-acr iisdevopsprojectcontainerregistry
 
-    2. Execute these commands from the ./api/TodoApi folder
+    3. Execute these commands from the ./api/TodoApi folder
         - docker build -t iisdevopsprojectcontainerregistry.azurecr.io/iiq-devops-project-api:latest .
         - docker push iisdevopsprojectcontainerregistry.azurecr.io/iiq-devops-project-api:latest
 
-    2. Execute these commands from the ./web/todo-ui folder
+    4. Execute these commands from the ./web/todo-ui folder
         - docker build -t iisdevopsprojectcontainerregistry.azurecr.io/iiq-devops-project-web:latest .
         - docker push iisdevopsprojectcontainerregistry.azurecr.io/iiq-devops-project-web:latest
 
@@ -53,3 +53,11 @@ Third: Configure the AKS cluster to use an Nginx ingress conroller, setup local 
 
     5. kubectl delete -f api-deployment.yaml,api-service.yaml,ingress.yaml,web-deployment.yaml,web-service.yaml -n ingress-nginx
         - If things seem borked, tear down the k8s resources and start from step 3 of this section again 
+
+Fourth: Configure Monitoring/Dashboards for the AKS cluster using Prometheus and Grafana
+- The Azure monitoring resources are partially provisioned from the Terraform modules, but some additional manual steps are needed to enable Azure managed Prometheus and Grafana
+    1. In the Azure portal, go to the AKS cluster page, click the "Monitoring" menu dropdown, click "Insights"
+    2. Click "Enable Prometheus"
+    3. Enable each of the monitoring options available (this takes a few minutes to spin up)
+    4. Start using the app, adding notes, refreshing the page, etc.
+    5. Review the monitoring dashboards on the "Insights" page
