@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.34.0 (HEAD)
+  labels:
+    app: api
+  name: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.34.0 (HEAD)
+      labels:
+        app: api
+    spec:
+      containers:
+        - image: iisdevopsprojectcontainerregistry.azurecr.io/iiq-devops-project-api:latest
+          name: api
+          ports:
+            - containerPort: 5000
+              protocol: TCP
+      restartPolicy: Always
